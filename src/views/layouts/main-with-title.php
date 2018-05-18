@@ -7,8 +7,8 @@ use yii\helpers\Html;
 
 $this->beginContent(__DIR__ . "/main-core.php");
 
-$icon = ArrayHelper::getValue($this->params, "pageIcon", Ion::_IOS_BOOKMARKS_OUTLINE);
-$desc = ArrayHelper::getValue($this->params, "pageDescription", "Your description");
+$icon = ArrayHelper::getValue($this->params, "pageIcon");
+$desc = ArrayHelper::getValue($this->params, "pageDescription");
 $title = ArrayHelper::getValue($this->params, "pageTitle", $this->title);
 $breadcrumbs = ArrayHelper::getValue($this->params, "breadcrumbs");
 
