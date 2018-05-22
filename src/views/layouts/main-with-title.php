@@ -28,7 +28,7 @@ echo Html::beginTag("div", ["class" => "br-pagetitle"]) .
     Html::tag("div", $titleHtml . $titleDesc) .
 Html::endTag("div");
 
-echo Html::beginTag("div", ["class" => "br-pagebody"]),
+echo Html::beginTag("div", ["class" => "br-pagebody"]);
 echo $bracket->withFlashAlert ? FlashAlert::widget() : ''; 
 echo $content;
 echo Html::endTag("div");
