@@ -29,6 +29,7 @@ class Bracket extends Component
     /* custom option */
     public $collapseMenu = false;
     public $theme = self::THEME_DEFAULT;
+    public $withFlashAlert = true;
 
     /**
      * @var string|array $sidebarConfig
