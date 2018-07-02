@@ -8,7 +8,7 @@ $this->beginContent(__DIR__.'/base.php');
 $bracket = Bracket::getComponent();
 ?>
 <div class="br-logo">
-    <a href=""><span>[</span>bracket <i>plus</i><span>]</span></a>
+    <a href=""><span>[</span><?=$bracket->firstName?> <i><?=$bracket->lastName?></i><span>]</span></a>
 </div>
 <?php
 echo $this->render($bracket->sidebarFile);

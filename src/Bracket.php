@@ -23,6 +23,8 @@ class Bracket extends Component
     
     /* custom option */
     public $collapseMenu = false;
+    public $firstName = 'Izzy';
+    public $lastName = 'Parcel';
 
     /**
      * @var string|array $sidebarConfig
