@@ -23,8 +23,7 @@ class Bracket extends Component
     
     /* custom option */
     public $collapseMenu = false;
-    public $firstName = 'Izzy';
-    public $lastName = 'Parcel';
+    public $logo = '<a href=""><span>[</span>bracket <i>plus</i><span>]</span></a>';
 
     /**
      * @var string|array $sidebarConfig
