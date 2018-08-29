@@ -31,7 +31,6 @@ class MainAsset extends AssetBundle
 
     public $depends = [
         YiiAsset::class,
-        PopperAsset::class,
         BootstrapPluginAsset::class,
         PerfectScrollAsset::class,
         FABundle::class,

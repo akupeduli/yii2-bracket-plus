@@ -1,6 +1,7 @@
 <?php
 
 use akupeduli\bracket\assets\plugins\DataTableAsset;
+use akupeduli\bracket\assets\plugins\PopperAsset;
 use yii\bootstrap4\BootstrapPluginAsset;
 use yii\web\JqueryAsset;
 use yii\web\View;
@@ -14,7 +15,8 @@ return [
 
     BootstrapPluginAsset::class => [
         'depends' => [
-            JqueryAsset::class
+            JqueryAsset::class,
+            PopperAsset::class
         ],
     ],
 
