@@ -3,7 +3,6 @@
 namespace akupeduli\bracket\assets\core;
 
 use akupeduli\bracket\assets\plugins\JqueryUIAsset;
-use akupeduli\bracket\assets\plugins\PopperAsset;
 use rmrevin\yii\fontawesome\AssetBundle as FABundle;
 use rmrevin\yii\ionicon\AssetBundle as IonBundle;
 use akupeduli\bracket\assets\plugins\PerfectScrollAsset;
