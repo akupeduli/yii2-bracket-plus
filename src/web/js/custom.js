@@ -160,9 +160,6 @@ $(document).ready(function () {
             });
     }
 
-    // custom scrollbar style [This is required for sidebar]
-    $('.overflow-y-auto').perfectScrollbar();
-
     // jquery ui datepicker
     if ($.fn.datepicker) {
         $('.datepicker').datepicker();

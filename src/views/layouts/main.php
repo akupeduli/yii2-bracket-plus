@@ -6,6 +6,7 @@ use yii\helpers\Html;
 
 /** @var Bracket $bracket */
 $bracket = Bracket::getComponent();
+$bracket->registerAsset($bracket->pluginBundleClass);
 
 $this->beginContent(__DIR__ . "/main-core.php");
 echo Html::beginTag("div", ["class" => "br-pagebody"]);

@@ -3,6 +3,7 @@
 namespace akupeduli\bracket;
 
 use akupeduli\bracket\assets\BracketAsset;
+use akupeduli\bracket\assets\BracketPlugin;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\web\AssetBundle;
@@ -10,7 +11,6 @@ use yii\web\AssetBundle;
 /**
  *
  * @property string $assetPath
- * @property string $sourcePath
  */
 class Bracket extends Component
 {
@@ -20,11 +20,12 @@ class Bracket extends Component
     const THEME_SIMPLE = "simple-white";
 
     public static $componentName    = "bracket";
-    public static $componentVersion = "1.0";
+    public static $componentVersion = "1.4";
 
     /* must be filled */
-    public $assetSourcePath; // path of source bracket plus
+    public $sourcePath; // path of source bracket plus
     public $assetBundleClass =  BracketAsset::class; // class of asset bundle (in case if you want to custom)
+    public $pluginBundleClass =  BracketPlugin::class; // class of asset bundle (in case if you want to custom)
     
     /* custom option */
     public $collapseMenu = false;
@@ -58,17 +59,12 @@ class Bracket extends Component
 
     public function getAssetPath()
     {
-        return $this->assetSourcePath;
-    }
-
-    public function getSourcePath()
-    {
-        return $this->assetSourcePath;
+        return $this->sourcePath . "/app";
     }
 
     public function registerAsset($view)
     {
-        if ($this->assetSourcePath === null) {
+        if ($this->sourcePath === null) {
             throw new InvalidConfigException('Please set $assetSourcePath of remark admin template');
         }
         if ($this->assetBundleClass === null) {
@@ -78,5 +74,19 @@ class Bracket extends Component
         /** @var AssetBundle $assetBundleClass */
         $assetBundleClass = $this->assetBundleClass;
         $assetBundleClass::register($view);
+    }
+    
+    public function registerPlugin($view)
+    {
+        if ($this->sourcePath === null) {
+            throw new InvalidConfigException('Please set $assetSourcePath of remark admin template');
+        }
+        if ($this->pluginBundleClass === null) {
+            throw new InvalidConfigException('Please set $pluginBundleClass property.');
+        }
+        
+        /** @var AssetBundle $pluginBundleClass */
+        $pluginBundleClass = $this->pluginBundleClass;
+        $pluginBundleClass::register($view);
     }
 }

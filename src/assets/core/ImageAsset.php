@@ -13,8 +13,9 @@ class ImageAsset extends AssetBundle
 {
     public function init()
     {
+        /** @var Bracket $bracket */
         $bracket          = Bracket::getComponent();
-        $this->sourcePath = $bracket->sourcePath . "/img";
+        $this->sourcePath = $bracket->assetPath . "/img";
         parent::init();
     }
 }

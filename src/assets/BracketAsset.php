@@ -8,12 +8,6 @@ use yii\web\AssetBundle;
 class BracketAsset extends AssetBundle
 {
     public $sourcePath = "@akupeduli/bracket/web";
-    public $js = [
-        "js/custom.js",
-    ];
-    public $css = [
-        "css/style.css"
-    ];
     public $depends = [
         MainAsset::class
     ];
