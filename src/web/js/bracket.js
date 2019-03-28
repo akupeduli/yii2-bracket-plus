@@ -2,26 +2,23 @@
  * Bracket Plus v1.1.0 (https://themetrace.com/bracketplus)
  * Copyright 2017-2018 ThemePixels
  * Licensed under ThemeForest License
- * Custom By L Shaf
- * 
- * I add some validation when some plugin doesn't included, it won't show any error
  */
 
 'use strict';
 
-$(document).ready(function () {
+$(document).ready(function(){
 
     // This will collapsed sidebar menu on left into a mini icon menu
-    $('#btnLeftMenu').on('click', function () {
+    $('#btnLeftMenu').on('click', function(){
         var menuText = $('.menu-item-label');
 
-        if ($('body').hasClass('collapsed-menu')) {
+        if($('body').hasClass('collapsed-menu')) {
             $('body').removeClass('collapsed-menu');
 
             // show current sub menu when reverting back from collapsed menu
             $('.show-sub + .br-menu-sub').slideDown();
 
-            $('.br-sideleft').one('transitionend', function (e) {
+            $('.br-sideleft').one('transitionend', function(e) {
                 menuText.removeClass('op-lg-0-force');
                 menuText.removeClass('d-lg-none');
             });
@@ -33,7 +30,7 @@ $(document).ready(function () {
             $('.show-sub + .br-menu-sub').slideUp();
 
             menuText.addClass('op-lg-0-force');
-            $('.br-sideleft').one('transitionend', function (e) {
+            $('.br-sideleft').one('transitionend', function(e) {
                 menuText.addClass('d-lg-none');
             });
         }
@@ -41,15 +38,16 @@ $(document).ready(function () {
     });
 
 
+
     // This will expand the icon menu when mouse cursor points anywhere
     // inside the sidebar menu on left. This will only trigget to left sidebar
     // when it's in collapsed mode (the icon only menu)
-    $(document).on('mouseover', function (e) {
+    $(document).on('mouseover', function(e){
         e.stopPropagation();
 
-        if ($('body').hasClass('collapsed-menu') && $('#btnLeftMenu').is(':visible')) {
+        if($('body').hasClass('collapsed-menu') && $('#btnLeftMenu').is(':visible')) {
             var targ = $(e.target).closest('.br-sideleft').length;
-            if (targ) {
+            if(targ) {
                 $('body').addClass('expand-menu');
 
                 // show current shown sub menu that was hidden from collapsed
@@ -73,23 +71,24 @@ $(document).ready(function () {
     });
 
 
+
     // This will show sub navigation menu on left sidebar
     // only when that top level menu have a sub menu on it.
-    $('.br-menu-link').on('click', function () {
+    $('.br-sideleft').on('click', '.br-menu-link', function(){
         var nextElem = $(this).next();
         var thisLink = $(this);
 
-        if (nextElem.hasClass('br-menu-sub')) {
+        if(nextElem.hasClass('br-menu-sub')) {
 
-            if (nextElem.is(':visible')) {
+            if(nextElem.is(':visible')) {
                 thisLink.removeClass('show-sub');
                 nextElem.slideUp();
             } else {
-                $('.br-menu-link').each(function () {
+                $('.br-menu-link').each(function(){
                     $(this).removeClass('show-sub');
                 });
 
-                $('.br-menu-sub').each(function () {
+                $('.br-menu-sub').each(function(){
                     $(this).slideUp();
                 });
 
@@ -101,82 +100,89 @@ $(document).ready(function () {
     });
 
 
+
     // This will trigger only when viewed in small devices
     // #btnLeftMenuMobile element is hidden in desktop but
     // visible in mobile. When clicked the left sidebar menu
     // will appear pushing the main content.
-    $('#btnLeftMenuMobile').on('click', function () {
+    $('#btnLeftMenuMobile').on('click', function(){
         $('body').addClass('show-left');
         return false;
     });
 
 
+
     // This is the right menu icon when it's clicked, the
     // right sidebar will appear that contains the four tab menu
-    $('#btnRightMenu').on('click', function () {
+    $('#btnRightMenu').on('click', function(){
         $('body').addClass('show-right');
         return false;
     });
 
 
+
     // This will hide sidebar when it's clicked outside of it
-    $(document).on('click', function (e) {
+    $(document).on('click touchstart', function(e){
         e.stopPropagation();
 
         // closing left sidebar
-        if ($('body').hasClass('show-left')) {
+        if($('body').hasClass('show-left')) {
             var targ = $(e.target).closest('.br-sideleft').length;
-            if (!targ) {
+            if(!targ) {
                 $('body').removeClass('show-left');
             }
         }
 
         // closing right sidebar
-        if ($('body').hasClass('show-right')) {
+        if($('body').hasClass('show-right')) {
             var targ = $(e.target).closest('.br-sideright').length;
-            if (!targ) {
+            if(!targ) {
                 $('body').removeClass('show-right');
             }
         }
     });
 
 
+
     // displaying time and date in right sidebar
-    if (typeof moment !== "undefined") {
-        var interval = setInterval(function () {
-            var momentNow = moment();
-            $('#brDate').html(momentNow.format('MMMM DD, YYYY') + ' '
-                + momentNow.format('dddd')
-                    .substring(0, 3).toUpperCase());
-            $('#brTime').html(momentNow.format('hh:mm:ss A'));
-        }, 100);
-    }
+    var interval = setInterval(function() {
+        var momentNow = moment();
+        $('#brDate').html(momentNow.format('MMMM DD, YYYY') + ' '
+            + momentNow.format('dddd')
+                .substring(0,3).toUpperCase());
+        $('#brTime').html(momentNow.format('hh:mm:ss A'));
+    }, 100);
 
     // Datepicker
-    if ($.fn.datepicker) {
+    if($().datepicker) {
+        $('.datepicker').datepicker();
         $('.form-control-datepicker').datepicker()
             .on("change", function (e) {
                 console.log("Date changed: ", e.target.value);
             });
     }
 
-    // jquery ui datepicker
-    if ($.fn.datepicker) {
-        $('.datepicker').datepicker();
-    }
+    // custom scrollbar style
+    var scbars = ["sideleft", "contact", "attachment", "schedule", "settings"];
+    scbars.forEach(function (data) {
+        var elebars = "." + data + "-scrollbar";
+        if ($(elebars).length > 0){
+            new PerfectScrollbar(elebars, {
+                suppressScrollX: true
+            })
+        }
+    });
 
     // switch button
-    if ($.fn.switchButton) {
-        $('.switch-button').switchButton();
-    } 
+    $('.br-switchbutton').on('click', function(){
+        $(this).toggleClass('checked');
+    });
 
     // peity charts
-    if ($.fn.peity) {
-        $('.peity-bar').peity('bar');
-    }
+    if ($().piety) $('.peity-bar').peity('bar');
 
     // highlight syntax highlighter
-    $('pre code').each(function (i, block) {
+    $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
     });
 
@@ -186,6 +192,8 @@ $(document).ready(function () {
     // Initialize popover
     $('[data-popover-color="default"]').popover();
 
+
+
     // By default, Bootstrap doesn't auto close popover after appearing in the page
     // resulting other popover overlap each other. Doing this will auto dismiss a popover
     // when clicking anywhere outside of it
@@ -194,9 +202,32 @@ $(document).ready(function () {
             //the 'is' for buttons that trigger popups
             //the 'has' for icons within a button that triggers a popup
             if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                (($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false  // fix for BS 3.3.6
+                (($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
             }
 
         });
     });
+
+
+
+    // Select2 Initialize
+    // Select2 without the search
+    if($().select2) {
+        $('.select2').select2({
+            minimumResultsForSearch: Infinity,
+            placeholder: 'Choose one'
+        });
+
+        // Select2 by showing the search
+        $('.select2-show-search').select2({
+            minimumResultsForSearch: ''
+        });
+
+        // Select2 with tagging support
+        $('.select2-tag').select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        });
+    }
+
 });

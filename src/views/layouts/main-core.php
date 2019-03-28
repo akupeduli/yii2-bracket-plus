@@ -1,12 +1,12 @@
 <?php
 
+use akupeduli\bracket\assets\core\JSAsset;
 use akupeduli\bracket\Bracket;
-use akupeduli\bracket\widgets\SidebarMenu;
 use yii\helpers\Html;
 
 $this->beginContent(__DIR__.'/base.php');
 $bracket = Bracket::getComponent();
-$bracket->registerPlugin($this);
+JSAsset::register($this);
 ?>
 <div class="br-logo">
     <?= $bracket->logo ?>

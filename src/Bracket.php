@@ -3,7 +3,6 @@
 namespace akupeduli\bracket;
 
 use akupeduli\bracket\assets\BracketAsset;
-use akupeduli\bracket\assets\BracketPlugin;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\web\AssetBundle;
@@ -25,7 +24,6 @@ class Bracket extends Component
     /* must be filled */
     public $sourcePath; // path of source bracket plus
     public $assetBundleClass =  BracketAsset::class; // class of asset bundle (in case if you want to custom)
-    public $pluginBundleClass =  BracketPlugin::class; // class of asset bundle (in case if you want to custom)
     
     /* custom option */
     public $collapseMenu = false;
@@ -74,19 +72,5 @@ class Bracket extends Component
         /** @var AssetBundle $assetBundleClass */
         $assetBundleClass = $this->assetBundleClass;
         $assetBundleClass::register($view);
-    }
-    
-    public function registerPlugin($view)
-    {
-        if ($this->sourcePath === null) {
-            throw new InvalidConfigException('Please set $assetSourcePath of remark admin template');
-        }
-        if ($this->pluginBundleClass === null) {
-            throw new InvalidConfigException('Please set $pluginBundleClass property.');
-        }
-        
-        /** @var AssetBundle $pluginBundleClass */
-        $pluginBundleClass = $this->pluginBundleClass;
-        $pluginBundleClass::register($view);
     }
 }

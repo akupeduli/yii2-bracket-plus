@@ -15,10 +15,7 @@ class PerfectScrollAsset extends PluginAsset
 {
     public $pluginName = "perfect-scrollbar";
     public $js = [
-        "js/perfect-scrollbar.jquery" . (YII_ENV_DEV ? "" : ".min") . ".js"
-    ];
-    public $css = [
-        "css/perfect-scrollbar" . (YII_ENV_DEV ? "" : ".min") . ".css"
+        "perfect-scrollbar.min.js"
     ];
     public $depends = [
         JqueryAsset::class
