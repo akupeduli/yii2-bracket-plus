@@ -21,7 +21,6 @@ class MainAsset extends AssetBundle
     ];
 
     public $depends = [
-        YiiAsset::class,
         FABundle::class,
         IonBundle::class
     ];
