@@ -6,6 +6,7 @@ use yii\helpers\Html;
 
 $this->beginContent(__DIR__.'/base.php');
 $bracket = Bracket::getComponent();
+$bracket->registerPlugin($this);
 ?>
 <div class="br-logo">
     <?= $bracket->logo ?>
