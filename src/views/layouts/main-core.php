@@ -11,8 +11,15 @@ JSAsset::register($this);
 <div class="br-logo">
     <?= $bracket->logo ?>
 </div>
+<?= $this->render($bracket->sidebarFile) ?>
+<?= $this->render($bracket->navbarFile) ?>
+<div class="br-mainpanel">
+    <?= $content ?>
+    <footer class="br-footer">
+        <div class="footer-left">
+            <div><?= $bracket->footerText ?></div>
+        </div>
+    </footer>
+</div>
 <?php
-echo $this->render($bracket->sidebarFile);
-echo $this->render($bracket->navbarFile);
-echo Html::tag("div", $content, ["class" => "br-mainpanel"]);
 $this->endContent();
