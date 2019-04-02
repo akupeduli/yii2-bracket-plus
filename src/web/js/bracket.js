@@ -230,4 +230,18 @@ $(document).ready(function(){
         });
     }
 
+    // datatable custom by shaf
+    if ($.fn.dataTable) {
+        $.extend( $.fn.dataTable.defaults, {
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
+        });
+        $('table[datatable]').on( 'init.dt', function () {
+            $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+        });
+    }
 });
