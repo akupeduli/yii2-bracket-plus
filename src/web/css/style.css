@@ -6,3 +6,12 @@
 .menu-item-icon {
     text-align: center;
 }
+.has-error input,
+.has-error select {
+    border-color: var(--danger);
+}
+.has-error label,
+.has-error .help-block {
+    color: var(--danger);
+}
+
