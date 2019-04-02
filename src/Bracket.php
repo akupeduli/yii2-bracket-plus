@@ -28,6 +28,7 @@ class Bracket extends Component
     /* custom option */
     public $collapseMenu = false;
     public $logo = '<a href=""><span>[</span>bracket <i>plus</i><span>]</span></a>';
+    public $footerText = "Copyright &copy; 2019. Akupeduli Yii2 Bracket Plus. All Rights Reserved.";
     public $theme = self::THEME_DEFAULT;
     public $withFlashAlert = true;
 
