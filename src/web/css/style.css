@@ -5,13 +5,22 @@
 }
 .menu-item-icon {
     text-align: center;
-}
+ }
 .has-error input,
-.has-error select {
+.has-error select,
+.has-error.custom-file .custom-file-label {
     border-color: var(--danger);
 }
+.has-error.custom-file .custom-file-label:after {
+    border-color: var(--danger);
+    background-color: var(--danger);
+    color: white;
+}
 .has-error label,
-.has-error .help-block {
+.has-error .help-block,
+.has-error .br-section-label{
     color: var(--danger);
 }
-
+.form-layout .custom-file.form-group {
+    margin-top: 25px;
+}
